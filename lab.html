@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self';
+          font-src *;
+          img-src * data:;
+          media-src *;
+          style-src * 'unsafe-inline';
+          connect-src *;
+          script-src 'self' 'unsafe-eval' 'unsafe-inline' *.bootstrapcdn.com *.jquery.com *.jsdelivr.net">
+    <title>
+Tabnabbing
+</title>
+    <link rel="shortcut icon"
+          href="/static/img/favicon.ico"
+          type="image/vnd.microsoft.icon">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link href="/static/summernote/django_summernote.css" rel="stylesheet">
+    <link href="/static/summernote/summernote-bs4.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script src="/static/summernote/jquery.ui.widget.js"></script>
+    <script src="/static/summernote/jquery.fileupload.js"></script>
+    <script src="/static/summernote/summernote-bs4.min.js"></script>
+    <script src="/static/summernote/ResizeSensor.js"></script>
+</head>
+<body>
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <a class="blog-header-logo text-dark" href="/">Web Security Lab</a>
+            <form class="form-inline" action="/" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="sRw5Fd9hZruHMmUXg6emn61ooBIoIF1GfiASIWoAF8ZpLEj6vkpMKe038mJFGLWp">
+                
+
+                    <div class="justify-content-end align-items-center d-flex">
+
+                        <div class="dropdown">
+                            <a class="dropdown-toggle"
+                               id="dropdownMenuButton"
+                               data-toggle="dropdown"
+                               role="button"
+                            >
+                                Welcome, dgarcia329
+                            </a>
+                            <div class="dropdown-menu"
+                                 aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" role="button"
+                                   data-toggle="modal"
+                                   data-target="#userTheme">Update Theme</a>
+                                <a class="dropdown-item" role="button"
+                                   id="signout"
+                                   href="/accounts/logout">Sign
+                                    out</a>
+                            </div>
+                        </div>
+
+                    </div>
+                
+            </form>
+        </div>
+    </header>
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-start">
+            <a class="p-2 text-muted" href="/writeup" class="link">My writeups</a>
+            <a class="p-2 text-muted" href="/writeup/create" class="link">New writeup</a>
+            <a class="p-2 text-muted" href="/console">Console</a>
+        </nav>
+    </div>
+</div>
+<div class="container">
+
+    
+<style>
+    .blur {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(8px);
+        height: 100vh;
+        width: 50%;
+    }
+</style>
+<div class="container">
+    <div class="alert alert-warning" role="alert">
+        Your session has expired! Please login to continue.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="row justify-content-md-center" style="margin-bottom: 10em">
+        <div class="col-6 login">
+            <form class="form-signin" action="https://cs6262.gtisc.gatech.edu/receive/dgarcia329/2265" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="sRw5Fd9hZruHMmUXg6emn61ooBIoIF1GfiASIWoAF8ZpLEj6vkpMKe038mJFGLWp">
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="/static/img/buzz.svg" alt="" width="72" height="72">
+                </div>
+
+                <div class="form-label-group">
+                    <label for="username" class="sr-only">GT Username</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="GT username"
+                        required>
+                </div>
+                <div class="form-label-group">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password"
+                        required>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" id="#signIn">
+                    Sign-in
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="userTheme" tabindex="-1" role="dialog"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modelTitle">User Theme
+                    Customization</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="currentUrl"
+                               class="col-sm-2 col-form-label">Current
+                            Customized Theme URL</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly
+                                   class="form-control-plaintext"
+                                   id="currentUrl"
+                                   value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="userUrl"
+                               class="col-sm-2 col-form-label">Your Theme
+                            URL</label>
+                        <div class="col-sm-10">
+                            <input type="url" class="form-control"
+                                   id="userUrl"
+                                   placeholder="http(s)://">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                        data-dismiss="modal">Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="saveUserTheme()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Notification-->
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+     id="notification" style="position: fixed; top: 0; right: 0;">
+    <div class="toast-header">
+        <strong class="mr-auto">Alert!</strong>
+        <small class="text-muted">just now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast"
+                aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body" id="notificationContent">
+
+    </div>
+</div>
+
+<footer class="blog-footer bg-light footer mt-auto py-3">
+    <p>Web Security Lab for CS 6262 at GaTech</p>
+    <p>
+        <a href="#">Back to top</a>
+    </p>
+    <div class="custom-control custom-switch">
+        <input type="checkbox"
+               class="custom-control-input"
+               id="themeSwitch"
+               onclick="toggleTheme()">
+        <label class="custom-control-label"
+               for="themeSwitch">Toggle Theme</label>
+    </div>
+</footer>
+
+<script src="/static/js/switch.js"></script>
+</body>
+
+</html>
